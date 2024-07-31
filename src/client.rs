@@ -367,12 +367,12 @@ impl Generator {
                         let repr_ty = t.repr_ty();
                         quote! {
                             let _len = len;
-                            #[derive(zerocopy::FromBytes, zerocopy::Unaligned)]
+                            #[derive(zerocopy::FromBytes, zerocopy::FromZeroes, zerocopy::Unaligned)]
                             #[repr(C, packed)]
                             struct #reply_ty {
                                 value: #repr_ty,
                             }
-                            let lv = zerocopy::LayoutVerified::<_, #reply_ty>::new_unaligned(&reply[..])
+                            let lv = zerocopy::Ref::<_, #reply_ty>::new_unaligned(&reply[..])
                                 .unwrap_lite();
                             let v: #repr_ty = lv.value;
                         }

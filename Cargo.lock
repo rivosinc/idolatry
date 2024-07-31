@@ -10,7 +10,7 @@ dependencies = [
  "bitflags",
  "byteorder",
  "serde",
- "zerocopy",
+ "zerocopy 0.6.1",
 ]
 
 [[package]]
@@ -280,7 +280,7 @@ version = "0.1.0"
 dependencies = [
  "counters",
  "userlib",
- "zerocopy",
+ "zerocopy 0.7.35",
 ]
 
 [[package]]
@@ -656,7 +656,7 @@ dependencies = [
  "paste",
  "serde",
  "ssmarshal",
- "zerocopy",
+ "zerocopy 0.6.1",
 ]
 
 [[package]]
@@ -795,7 +795,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "332f188cc1bcf1fe1064b8c58d150f497e697f49774aa846f2dc949d9a25f236"
 dependencies = [
  "byteorder",
- "zerocopy-derive",
+ "zerocopy-derive 0.3.1",
+]
+
+[[package]]
+name = "zerocopy"
+version = "0.7.35"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1b9b4fd18abc82b8136838da5d50bae7bdea537c574d8dc1a34ed098d6c166f0"
+dependencies = [
+ "byteorder",
+ "zerocopy-derive 0.7.35",
 ]
 
 [[package]]
@@ -807,4 +817,15 @@ dependencies = [
  "proc-macro2",
  "syn 1.0.109",
  "synstructure",
+]
+
+[[package]]
+name = "zerocopy-derive"
+version = "0.7.35"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fa4f8080344d4671fb4e831a13ad1e68092748387dfc4f55e356242fae12ce3e"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.52",
 ]

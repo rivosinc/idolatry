@@ -213,7 +213,7 @@ impl Generator {
                 let attrs = match op.encoding {
                     syntax::Encoding::Zerocopy => quote! {
                         #[repr(C, packed)]
-                        #[derive(Copy, Clone, zerocopy::FromBytes, zerocopy::Unaligned)]
+                        #[derive(Copy, Clone, zerocopy::FromBytes, zerocopy::FromZeroes, zerocopy::Unaligned)]
                     },
                     syntax::Encoding::Ssmarshal => quote! {
                         #[derive(Copy, Clone, serde::Deserialize)]
@@ -307,7 +307,7 @@ impl Generator {
                     match op.encoding {
                         syntax::Encoding::Zerocopy => quote! {
                             pub fn #read_fn(bytes: &[u8]) -> Option<&#struct_name> {
-                                Some(zerocopy::LayoutVerified::<_, #struct_name>::new_unaligned(bytes)?
+                                Some(zerocopy::Ref::<_, #struct_name>::new_unaligned(bytes)?
                                     .into_ref())
                             }
                         },
