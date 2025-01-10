@@ -8,8 +8,11 @@
 use core::marker::PhantomData;
 use core::num::NonZeroU32;
 use core::ops::Range;
-use core::sync::atomic::{AtomicU32, Ordering};
-use counters::{armv6m_atomic_hack::AtomicU32Ext, Count};
+use core::sync::atomic::Ordering;
+use counters::{
+    atomic_hack::{AtomicU32, AtomicU32Ext},
+    Count,
+};
 use userlib::{
     sys_borrow_info, sys_borrow_read, sys_borrow_write, sys_recv, sys_reply,
     sys_reply_fault, FromPrimitive, LeaseAttributes, RecvMessage,
